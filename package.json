@@ -1,5 +1,5 @@
 {
-  "name": "ihma_imp_frontend",
+  "name": "ihma_frontend_template",
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
