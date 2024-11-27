@@ -4,6 +4,7 @@ import { useNotification } from "@kyvg/vue3-notification";
 import { reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { RefreshIcon, XIcon, EyeIcon } from "vue-tabler-icons";
+import FormTable from "./FormTables/FormTable.vue";
 
 interface IFilter {
   search: string;
