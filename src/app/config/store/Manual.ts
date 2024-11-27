@@ -1,5 +1,4 @@
 import { ILanguageList, ISelectList } from "@/models/basic";
-import { KinshipDegreeService } from "@/services/info/KinshipDegree.service";
 import RegionService from "@/services/info/region.service";
 import ManualService from "@/services/others/manual.service.";
 import { defineStore } from "pinia";
@@ -29,12 +28,6 @@ export const useManualStore = defineStore("manual", {
       if (this.IdentityDocumentSelectList?.length) return;
       ManualService.IdentityDocumentSelectList().then((res) => {
         this.IdentityDocumentSelectList = res.data;
-      });
-    },
-    fetchKinshipDegreeSelectList() {
-      if (this.kinshipDegreeSelectList?.length) return;
-      KinshipDegreeService.GetAsSelectList().then((res) => {
-        this.kinshipDegreeSelectList = res.data;
       });
     },
     fetchStateSelectList() {

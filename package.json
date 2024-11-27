@@ -2,9 +2,9 @@
   "name": "ihma_imp_frontend",
   "version": "0.1.0",
   "scripts": {
-    "dev": "node index.js && vite",
+    "dev": "vite",
     "update-locale": "node index.js",
-    "build": "node index.js && vue-tsc --noEmit && vite build --ssrManifest --outDir dist",
+    "build": "vue-tsc --noEmit && vite build --ssrManifest --outDir dist",
     "build-only": "vite build",
     "preview": "vite build &&  vite preview --port 8088",
     "typecheck": "vue-tsc --noEmit",

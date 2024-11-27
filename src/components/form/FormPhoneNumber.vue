@@ -17,9 +17,10 @@ const emits = defineEmits(["update:modelValue"]);
 
 const { required } = toRefs(props);
 
-const { phoneNumberRules, setIsRequiredPhoneNumber, notRequiredPhoneNumberRules, set } = useCheckPhoneNumber();
+const { setIsRequiredPhoneNumber, notRequiredPhoneNumberRules, set, phoneNumberRulesWithCode } = useCheckPhoneNumber();
 
 const maskPattern = "+998 ## ### ## ##";
+
 const inputRef = ref<HTMLInputElement | null>(null);
 const displayValue = ref<string | null>(null);
 
@@ -41,6 +42,11 @@ const onType = () => {
   }
 
   if (displayValue.value?.length) {
+    // const code = displayValue.value.split(" ")[1] || null;
+    // if (code && code.length == 2) {
+    //   if (mobileCodes.includes(code)) {
+    //   }
+    // }
     emits("update:modelValue", set(displayValue.value)?.trimStart());
   } else {
     emits("update:modelValue", null);
@@ -88,12 +94,13 @@ watch(
     ref="inputRef"
     v-model="displayValue"
     :mask="maskPattern"
-    :rules="required ? phoneNumberRules : notRequiredPhoneNumberRules"
+    :rules="required ? phoneNumberRulesWithCode : notRequiredPhoneNumberRules"
     :required="required ? required : setIsRequiredPhoneNumber(displayValue)"
     @focus="onFocus"
     @input="onType"
     @paste="handlePaste"
     clearable
+    validate-on="input lazy"
   >
     <template v-for="(_, name) in ($slots as Record<string, any>)" #[name]="slotData">
       <slot :name="name" v-bind="slotData" />
